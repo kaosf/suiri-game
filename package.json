@@ -7,7 +7,7 @@
   },
   "dependencies": {
     "express": "3.0.0",
-    "jade": "*",
+    "jade": "0.30.0",
     "socket.io": "0.9.14"
   },
   "devDependencies": {
