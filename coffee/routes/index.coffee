@@ -3,5 +3,5 @@
 #
 
 exports.index = (req, res) ->
-  res.render 'index', title: 'Express', pretty: true
+  res.render 'index', pretty: true
   return
