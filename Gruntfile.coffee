@@ -16,12 +16,13 @@ module.exports = (grunt) ->
       all:
         src: 'test/**/*.coffee'
     clean:
-      build: './*.js'
+      app: 'app.js'
+      routes: 'routes'
 
   grunt.registerTask 'default', ['clean', 'compile', 'test']
   grunt.registerTask 'compile', ['coffee:base']
   grunt.registerTask 'test', ['simplemocha:all']
-  grunt.registerTask 'clean', ['clean:build']
+  grunt.registerTask 'clean', ['clean:app', 'clean:routes']
 
   grunt.loadNpmTasks 'grunt-contrib-coffee'
   grunt.loadNpmTasks 'grunt-simple-mocha'
