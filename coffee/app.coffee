@@ -4,7 +4,6 @@
 
 express = require 'express'
 routes = require './routes'
-user = require './routes/user'
 http = require 'http'
 path = require 'path'
 io = require 'socket.io'
@@ -30,7 +29,6 @@ app.configure('development', ->
 )
 
 app.get('/', routes.index)
-app.get('/users', user.list)
 
 server = http.createServer(app).listen(app.get('port'), ->
   console.log("Express server listening on port " + app.get('port'))
