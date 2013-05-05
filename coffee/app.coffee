@@ -7,6 +7,7 @@ routes = require './routes'
 user = require './routes/user'
 http = require 'http'
 path = require 'path'
+io = require 'socket.io'
 
 app = express()
 
@@ -31,7 +32,18 @@ app.configure('development', ->
 app.get('/', routes.index)
 app.get('/users', user.list)
 
-http.createServer(app).listen(app.get('port'), ->
+server = http.createServer(app).listen(app.get('port'), ->
   console.log("Express server listening on port " + app.get('port'))
+  return
+)
+
+io = io.listen(server)
+
+io.sockets.on('connection', (socket) ->
+  io.sockets.emit('login', socket.id)
+  socket.on('post', (data) ->
+    io.sockets.emit('post', id: socket.id, post: data)
+    return
+  )
   return
 )
